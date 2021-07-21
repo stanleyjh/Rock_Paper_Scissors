@@ -1,0 +1,10 @@
+h1 {
+  color: red;
+  /* border: 1pt solid red; */
+  text-align: center;
+}
+
+.gameboard, .scoreboard, .resetButton {
+  border: 1pt solid red;
+  text-align: center;
+}
