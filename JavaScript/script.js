@@ -48,7 +48,7 @@ const bot = {
 const rock = "rock";
 const paper = "paper";
 const scissors = "scissors";
-let delayInMilliseconds = 100;
+let delayInMilliseconds = 1000;
 let round = 0;
 let ties = 0;
 let result = undefined; 
@@ -69,7 +69,7 @@ function botChoice() {
     bot.botChoice = scissors;
   }
 
-  console.log("Bot choice: " + bot.botChoice);
+  //console.log("Bot choice: " + bot.botChoice);
 }
 
 botChoice();
@@ -79,8 +79,6 @@ function playerChoice() {
   do {
     player.playerChoice = window.prompt("Please enter: Rock, Paper, or Scissors.").toLowerCase();
   } while (player.playerChoice !== "rock" && player.playerChoice !== "paper" && player.playerChoice !== "scissors");
-
-  console.log("Player choice: " + player.playerChoice);
 }
 
 playerChoice();
@@ -91,14 +89,19 @@ function gameLogic(playerChoice, botChoice) {
   let tie = "Tie!";
 
   if ((playerChoice == "rock" && botChoice == "scissors") || (playerChoice == "scissors" && botChoice == "paper") || (playerChoice == "paper" && botChoice == "rock")) {
+    console.log("Player Choice: " + playerChoice);
+    console.log("Bot Choice: " + botChoice);
     console.log("************************* " + playerWin);
     return playerWin;
   }
   else if ((botChoice == "rock" && playerChoice == "scissors") || (botChoice == "scissors" && playerChoice == "paper") || (botChoice == "paper" && playerChoice == "rock")) {
+    console.log("Player Choice: " + playerChoice);
+    console.log("Bot Choice: " + botChoice);
     console.log("************************* " + botWin);
     return botWin;
   }
   else {
+    console.log("Both chose: " + playerChoice);
     console.log("************************* " + tie);
     return tie;
   }
