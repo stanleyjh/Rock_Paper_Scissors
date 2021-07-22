@@ -48,11 +48,16 @@ const bot = {
 const rock = "rock";
 const paper = "paper";
 const scissors = "scissors";
-let delayInMilliseconds = 1000;
+let delayInMilliseconds = 100;
 let round = 0;
 let ties = 0;
 let result = undefined; 
 let playAgain = undefined;
+
+// javascript to modify content of HTML elements to update values.
+let roundUpdate = document.getElementById("scoreboard_round");
+roundUpdate.textContent = round;
+console.log("round: " + round);
 
 // A function to assign a random number for the bot to use in choosing either rock, paper, or scissors. 
 function botChoice() {  
@@ -68,7 +73,6 @@ function botChoice() {
   else {
     bot.botChoice = scissors;
   }
-
   //console.log("Bot choice: " + bot.botChoice);
 }
 
