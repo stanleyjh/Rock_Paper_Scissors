@@ -56,8 +56,27 @@ let playAgain = undefined;
 
 // javascript to modify content of HTML elements to update values.
 let roundUpdate = document.getElementById("scoreboard_round");
-roundUpdate.textContent = round;
-console.log("round: " + round);
+
+let playerWinsUpdate = document.getElementById("scoreboard_player_wins");
+
+let playerLossesUpdate = document.getElementById("scoreboard_player_losses");
+
+let botWinsUpdate = document.getElementById("scoreboard_bot_wins");
+
+let botLossesUpdate = document.getElementById("scoreboard_bot_losses");
+
+let tiesUpdate = document.getElementById("scoreboard_ties");
+
+function scoreboardUpdate() {
+  roundUpdate.textContent = round;
+  playerWinsUpdate.textContent = player.playerWins;
+  playerLossesUpdate.textContent = player.playerLosses
+  botWinsUpdate.textContent = bot.botWins
+  botLossesUpdate.textContent = bot.botLosses
+  tiesUpdate.textContent = ties;
+}
+
+scoreboardUpdate();
 
 // A function to assign a random number for the bot to use in choosing either rock, paper, or scissors. 
 function botChoice() {  
@@ -161,7 +180,8 @@ function countdown() {
                 }
 
                 round++;
-
+                
+                scoreboardUpdate();
                 scoreboard();
 
                 playAgain = undefined;
@@ -177,3 +197,18 @@ function countdown() {
 }
 
 countdown();
+
+let selectButton = document.getElementById("reset_button");
+
+selectButton.addEventListener("click", resetButton);
+
+function resetButton() {
+  round = 0;
+  player.playerWins = 0;
+  player.playerLosses = 0;
+  bot.botWins = 0;
+  bot.botLosses = 0;
+  ties = 0;
+
+  scoreboardUpdate();
+}
