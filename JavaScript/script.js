@@ -104,7 +104,7 @@ function playerChoice() {
   } while (player.playerChoice !== "rock" && player.playerChoice !== "paper" && player.playerChoice !== "scissors");
 }
 
-playerChoice();
+//*playerChoice();
 
 function gameLogic(playerChoice, botChoice) {
   let playerWin = "Player wins!";

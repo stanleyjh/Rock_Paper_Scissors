@@ -1,4 +1,4 @@
-/*
+
 html {
   background: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/people-playing-paper-rock-scissors-royalty-free-illustration-1583269312.jpg?crop=0.994xw:0.799xh;0.00160xw,0.195xh&resize=2048:*") no-repeat center center fixed; 
   -webkit-background-size: cover;
@@ -6,23 +6,89 @@ html {
   -o-background-size: cover;
   background-size: cover;
 }
-*/
 
-h1 {
-  color: red;
-  /* border: 1pt solid red; */
-  text-align: center;
-}
-
-.gameboard, .scoreboard, .reset_button {
-  border: 1pt solid red;
-  text-align: center;
-}
-
+/* red border */
+h1, 
+.gameboard_1,
+.gameboard_1 > div > div,
+.gameboard_1 > div > p,
+.scoreboard, 
+.scoreboard > div > p, 
 .reset_button {
-  margin: 10px;
+  border: 1pt solid red;
+}
+
+/* center text */
+h1, 
+.gameboard_1, 
+.scoreboard, 
+.reset_button,
+.scoreboard > p,
+.gameboard_1 > p  {
+  text-align: center;
+}
+
+/* white background for elements */
+h1,
+.scoreboard,
+.gameboard_1,
+.reset_button {
+  background-color: white;
+}
+
+/* Header */
+h1 {
+  text-align: center;
+}
+
+/* Scoreboard */
+.scoreboard {
+  margin: 10px 0;
+}
+
+.scoreboard > div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.scoreboard > div > p {
+  margin: 16px;
+}
+
+/* Gameboard */
+.gameboard_1 {
+  margin: 10px 0;
+}
+
+.gameboard_1 > div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* rock, paper, scissors button selection */
+.selection {
+  margin: 16px;
+}
+
+.selection > p {
+  margin: 16px;
+}
+
+.selection > img {
+  width: 150px;
+  height: 150px;
+}
+
+/* Reset Button */
+.reset_button {
+  margin: 10px 0;
 }
 
 .reset_button > button {
-  color: blue;
+  color: red;
+  font-weight: bold;
+  padding: 10px 25px;
+  margin: 10px;
 }

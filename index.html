@@ -11,22 +11,43 @@
 	<body>
 		<h1>Rock, Paper, Scissors!</h1>		
 
-		<div class="gameboard">
-			<h2>Select one</h2>
-			<p>Rock</p>
-			<p>Paper</p>
-			<p>Scissors</p>
-		</div>
-
 		<div class="scoreboard">
 			<h2>Round: <span id="scoreboard_round"></span></h2>
-			<p>Player wins: <span id="scoreboard_player_wins"></span></p>
-			<p>Player losses: <span id="scoreboard_player_losses"></span></p>
-			<p>Bot wins: <span id="scoreboard_bot_wins"></span></p>
-			<p>Bot losses: <span id="scoreboard_bot_losses"></span></p>
-			<p>Ties: <span id="scoreboard_ties"></span></p>
-
+			<div>
+				<p>Player wins: <span id="scoreboard_player_wins"></span></p>
+				<p>Player losses: <span id="scoreboard_player_losses"></span></p>
+				<p>Bot wins: <span id="scoreboard_bot_wins"></span></p>
+				<p>Bot losses: <span id="scoreboard_bot_losses"></span></p>
+				<p>Ties: <span id="scoreboard_ties"></span></p>
+			</div>
 		</div>
+
+		<div class="gameboard_1">
+			
+			<h2>Select One</h2>
+			
+			<div>
+
+				<button id="rock_1" class="selection">
+					<p>Rock</p> 
+					<!-- Image by Sertion - Photo by Fluff, modified by Sertion, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=6867643-->
+					<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Rock-paper-scissors_%28rock%29.png/1024px-Rock-paper-scissors_%28rock%29.png" alt="rock">
+				</button>
+				
+				<button id="paper_1" class="selection">
+					<p>Paper</p>
+					<!-- Image by Sertion - Photo by Fluff, modified by Sertion, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=6867678 -->
+					<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Rock-paper-scissors_%28paper%29.png/1024px-Rock-paper-scissors_%28paper%29.png">
+				</button>
+
+				<button id="scissors_1" class="selection">
+					<p>Scissors</p>
+					<!-- Image by Sertion, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=7002383 -->
+					<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Rock-paper-scissors_%28scissors%29.png/1024px-Rock-paper-scissors_%28scissors%29.png">
+				</button>
+
+			</div>
+		</div> <!-- end gameboard_1 -->
 		
 		<div class="reset_button">
 			<button id="reset_button">Reset</button>
