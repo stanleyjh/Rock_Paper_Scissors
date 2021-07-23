@@ -14,11 +14,15 @@ h1 {
   text-align: center;
 }
 
-.gameboard, .scoreboard, .resetButton {
+.gameboard, .scoreboard, .reset_button {
   border: 1pt solid red;
   text-align: center;
 }
 
-.resetButton {
+.reset_button {
   margin: 10px;
+}
+
+.reset_button > button {
+  color: blue;
 }
