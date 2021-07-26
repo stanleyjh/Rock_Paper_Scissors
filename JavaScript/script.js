@@ -54,18 +54,17 @@ let ties = 0;
 let result = undefined; 
 let playAgain = undefined;
 
-// javascript to modify content of HTML elements to update values.
+// select ElementById
 let roundUpdate = document.getElementById("scoreboard_round");
-
 let playerWinsUpdate = document.getElementById("scoreboard_player_wins");
-
 let playerLossesUpdate = document.getElementById("scoreboard_player_losses");
-
 let botWinsUpdate = document.getElementById("scoreboard_bot_wins");
-
 let botLossesUpdate = document.getElementById("scoreboard_bot_losses");
-
 let tiesUpdate = document.getElementById("scoreboard_ties");
+
+let selectRock = document.getElementById("rock_1");
+let selectPaper = document.getElementById("paper_1");
+let selectScissors = document.getElementById("scissors_1");
 
 function scoreboardUpdate() {
   roundUpdate.textContent = round;
@@ -97,15 +96,37 @@ function botChoice() {
 
 botChoice();
 
-// Prompts the player for a choice.
+/* CONSOLE
+// Prompts the player for a choice. 
 function playerChoice() {
   do {
     player.playerChoice = window.prompt("Please enter: Rock, Paper, or Scissors.").toLowerCase();
   } while (player.playerChoice !== "rock" && player.playerChoice !== "paper" && player.playerChoice !== "scissors");
 }
 
-//*playerChoice();
+playerChoice();
+*/
 
+// assigns player choice
+selectRock.addEventListener("click", () => {
+  player.playerChoice = rock; 
+  console.log("Player choice: " + player.playerChoice);
+  gameLogic(player.playerChoice, bot.botChoice);
+});
+
+selectPaper.addEventListener("click", () => {
+  player.playerChoice = paper;
+  console.log("Player choice: " + player.playerChoice);
+  gameLogic(player.playerChoice, bot.botChoice);
+});
+
+selectScissors.addEventListener("click", () => {
+  player.playerChoice = scissors;
+  console.log("Player choice: " + player.playerChoice);
+  gameLogic(player.playerChoice, bot.botChoice);
+});
+
+/* CONSOLE
 function gameLogic(playerChoice, botChoice) {
   let playerWin = "Player wins!";
   let botWin = "Bot wins!";
@@ -129,7 +150,46 @@ function gameLogic(playerChoice, botChoice) {
     return tie;
   }
 }
+*/
 
+let selectGameboard1 = document.getElementsByClassName("gameboard_1")[0];
+
+//* left off here
+function pre_animation() {
+  console.log("selectGameboard1: " + selectGameboard1);
+  selectGameboard1.childNodes[1].remove();
+}
+
+
+function gameLogic(playerChoice, botChoice) {
+  pre_animation();
+
+  let playerWin = "Player wins!";
+  let botWin = "Bot wins!";
+  let tie = "Tie!";
+
+  if ((playerChoice == "rock" && botChoice == "scissors") || (playerChoice == "scissors" && botChoice == "paper") || (playerChoice == "paper" && botChoice == "rock")) {
+    console.log("Player Choice: " + playerChoice);
+    console.log("Bot Choice: " + botChoice);
+    console.log("************************* " + playerWin);
+    return playerWin;
+  }
+  else if ((botChoice == "rock" && playerChoice == "scissors") || (botChoice == "scissors" && playerChoice == "paper") || (botChoice == "paper" && playerChoice == "rock")) {
+    console.log("Player Choice: " + playerChoice);
+    console.log("Bot Choice: " + botChoice);
+    console.log("************************* " + botWin);
+    return botWin;
+  }
+  else {
+    console.log("Both chose: " + playerChoice);
+    console.log("************************* " + tie);
+    return tie;
+  }
+}
+
+
+
+/* CONSOLE
 function scoreboard() {
   console.log("*****SCOREBOARD******");
   console.log("** Round: " + round);
@@ -143,6 +203,7 @@ function scoreboard() {
   console.log("** Ties: " + ties);
   console.log("*********************");
 }
+*/
 
 function playItAgain(playAgain) {
     playAgain = window.confirm('Press OK to play again.');
