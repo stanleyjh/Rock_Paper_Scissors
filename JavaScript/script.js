@@ -25,6 +25,9 @@ rock > scissors
 scissors > paper
 paper > rock
 TIE if same. no points awarded.
+
+CHALLENGES:
+Figuring out how to modify the CSS using JavaScript to create animations. I tested and created the animations in CSS and then added the class names into the elements using JavaScript so I can start the animation at the right time.
 */
 
 // CODE
@@ -156,8 +159,57 @@ let selectGameboard1 = document.getElementsByClassName("gameboard_1")[0];
 
 //* left off here
 function pre_animation() {
-  console.log("selectGameboard1: " + selectGameboard1);
-  selectGameboard1.childNodes[1].remove();
+  // removes all child nodes from the parent.
+  selectGameboard1.innerHTML = "";
+
+  // create ...Rock! animation
+  const rock = document.createElement("p");
+  const rock_text = document.createTextNode("...Rock!");
+  rock.appendChild(rock_text);
+
+  selectGameboard1.appendChild(rock);
+
+  // adding attributes to enable the rock animation
+  rock.setAttribute("id", "rock_animation");
+  rock.style.cssText = "animation-name: appear_and_disappear;";
+
+  // create ...Paper! animation
+  const paper = document.createElement("p");
+  const paper_text = document.createTextNode("...Paper!");
+  paper.appendChild(paper_text);
+
+  selectGameboard1.appendChild(paper);
+
+  paper.setAttribute("id", "paper_animation");
+  paper.style.cssText = "animation-name: appear_and_disappear";
+
+  // create ...Scissors! animation
+  const scissors = document.createElement("p");
+  const scissors_text = document.createTextNode("...Scissors!");
+  scissors.appendChild(scissors_text);
+
+  selectGameboard1.appendChild(scissors);
+
+  scissors.setAttribute("id", "scissors_animation");
+  scissors.style.cssText = "animation-name: appear_and_disappear";
+
+  // create ...Shoot! animation
+  const shoot = document.createElement("p");
+  const shoot_text = document.createTextNode("...Shoot!");
+  shoot.appendChild(shoot_text);
+
+  selectGameboard1.appendChild(shoot);
+
+  shoot.setAttribute("id", "shoot_animation");
+  shoot.style.cssText = "animation-name: appear_and_disappear";
+
+  // remove pre-animation text
+  setTimeout( () => { 
+  rock.remove();
+  paper.remove();
+  scissors.remove();
+  shoot.remove();
+  }, 6000);
 }
 
 
@@ -186,8 +238,6 @@ function gameLogic(playerChoice, botChoice) {
     return tie;
   }
 }
-
-
 
 /* CONSOLE
 function scoreboard() {
