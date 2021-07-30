@@ -56,18 +56,21 @@ let round = 0;
 let ties = 0;
 let result = undefined; 
 let playAgain = undefined;
+const timeOut = 1500;
 
 // select ElementById
-let roundUpdate = document.getElementById("scoreboard_round");
-let playerWinsUpdate = document.getElementById("scoreboard_player_wins");
-let playerLossesUpdate = document.getElementById("scoreboard_player_losses");
-let botWinsUpdate = document.getElementById("scoreboard_bot_wins");
-let botLossesUpdate = document.getElementById("scoreboard_bot_losses");
-let tiesUpdate = document.getElementById("scoreboard_ties");
+const roundUpdate = document.getElementById("scoreboard_round");
+const playerWinsUpdate = document.getElementById("scoreboard_player_wins");
+const playerLossesUpdate = document.getElementById("scoreboard_player_losses");
+const botWinsUpdate = document.getElementById("scoreboard_bot_wins");
+const botLossesUpdate = document.getElementById("scoreboard_bot_losses");
+const tiesUpdate = document.getElementById("scoreboard_ties");
 
-let selectRock = document.getElementById("rock_1");
-let selectPaper = document.getElementById("paper_1");
-let selectScissors = document.getElementById("scissors_1");
+const selectRock = document.getElementById("rock_1");
+const selectPaper = document.getElementById("paper_1");
+const selectScissors = document.getElementById("scissors_1");
+
+const selectGameboard1 = document.getElementsByClassName("gameboard_1")[0];
 
 function scoreboardUpdate() {
   roundUpdate.textContent = round;
@@ -155,9 +158,6 @@ function gameLogic(playerChoice, botChoice) {
 }
 */
 
-let selectGameboard1 = document.getElementsByClassName("gameboard_1")[0];
-
-//* left off here
 function pre_animation() {
   // removes all child nodes from the parent.
   selectGameboard1.innerHTML = "";
@@ -209,16 +209,23 @@ function pre_animation() {
   paper.remove();
   scissors.remove();
   shoot.remove();
-  }, 6000);
+  }, timeOut);
 }
 
 
 function gameLogic(playerChoice, botChoice) {
   pre_animation();
 
-  let playerWin = "Player wins!";
-  let botWin = "Bot wins!";
-  let tie = "Tie!";
+  const playerWin = "Player wins!";
+  const botWin = "Bot wins!";
+  const tie = "Tie!";
+
+  const createH2 = document.createElement("h2");
+  const createH2_text = document.createTextNode(playerWin);
+  createH2.appendChild(createH2_text);
+
+  selectGameboard1.appendChild(createH2);
+  
 
   if ((playerChoice == "rock" && botChoice == "scissors") || (playerChoice == "scissors" && botChoice == "paper") || (playerChoice == "paper" && botChoice == "rock")) {
     console.log("Player Choice: " + playerChoice);
