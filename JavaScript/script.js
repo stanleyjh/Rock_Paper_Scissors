@@ -48,9 +48,9 @@ const bot = {
 }
 
 // Other variables
-const rock = "rock";
-const paper = "paper";
-const scissors = "scissors";
+const rock = "Rock";
+const paper = "Paper";
+const scissors = "Scissors";
 let delayInMilliseconds = 100;
 let round = 0;
 let ties = 0;
@@ -158,7 +158,7 @@ function gameLogic(playerChoice, botChoice) {
 }
 */
 
-function pre_animation() {
+function preAnimation() {
   // removes all child nodes from the parent.
   selectGameboard1.innerHTML = "";
 
@@ -212,38 +212,73 @@ function pre_animation() {
   }, timeOut);
 }
 
-
 function gameLogic(playerChoice, botChoice) {
-  pre_animation();
+  preAnimation();
 
   const playerWin = "Player wins!";
   const botWin = "Bot wins!";
   const tie = "Tie!";
 
+  // h2 element for final animation
   const createH2 = document.createElement("h2");
-  const createH2_text = document.createTextNode(playerWin);
-  createH2.appendChild(createH2_text);
+  const createH2_text = document.createTextNode("");
 
+  createH2.appendChild(createH2_text);
   selectGameboard1.appendChild(createH2);
   
-
   if ((playerChoice == "rock" && botChoice == "scissors") || (playerChoice == "scissors" && botChoice == "paper") || (playerChoice == "paper" && botChoice == "rock")) {
-    console.log("Player Choice: " + playerChoice);
-    console.log("Bot Choice: " + botChoice);
-    console.log("************************* " + playerWin);
-    return playerWin;
+    createH2_text.nodeValue = playerWin;
+    player.playerWins++;
+    bot.botLosses++;
+    scoreboardUpdate();
+    postAnimation(player.playerChoice, bot.botChoice);
   }
   else if ((botChoice == "rock" && playerChoice == "scissors") || (botChoice == "scissors" && playerChoice == "paper") || (botChoice == "paper" && playerChoice == "rock")) {
-    console.log("Player Choice: " + playerChoice);
-    console.log("Bot Choice: " + botChoice);
-    console.log("************************* " + botWin);
-    return botWin;
+    createH2_text.nodeValue = botWin;
+    player.playerLosses++;
+    bot.botWins++;
+    scoreboardUpdate();
+    postAnimation(player.playerChoice, bot.botChoice);
   }
   else {
-    console.log("Both chose: " + playerChoice);
-    console.log("************************* " + tie);
-    return tie;
+    createH2_text.nodeValue = tie;
+    ties++;
+    scoreboardUpdate();
+    postAnimation(player.playerChoice, bot.botChoice);
   }
+
+
+}
+
+function postAnimation(playerChoice, botChoice) {
+
+  selectGameboard1.classList.add("gameboard_3");
+
+  // player choice
+  const createH3_playerChoice = document.createElement("h3");
+  const createH3_playerChoice_text = document.createTextNode("You Chose:");
+
+  createH3_playerChoice.appendChild(createH3_playerChoice_text);
+  selectGameboard1.appendChild(createH3_playerChoice);
+
+  const createP_playerChoice = document.createElement("p");
+  const createP_playerChoice_text = document.createTextNode(playerChoice);
+
+  createP_playerChoice.appendChild(createP_playerChoice_text);
+  selectGameboard1.appendChild(createP_playerChoice);
+
+  // bot choice
+  const createH3_botChoice = document.createElement("h3");
+  const createH3_botChoice_text = document.createTextNode("Bot Chose: ");
+
+  createH3_botChoice.appendChild(createH3_botChoice_text);
+  selectGameboard1.appendChild(createH3_botChoice);
+
+  const createP_botChoice = document.createElement("p");
+  const createP_botChoice_text = document.createTextNode(botChoice);
+
+  createP_botChoice.appendChild(createP_botChoice_text);
+  selectGameboard1.appendChild(createP_botChoice);
 }
 
 /* CONSOLE
@@ -272,6 +307,7 @@ function playItAgain(playAgain) {
   }
 }
 
+/* CONSOLE
 function countdown() {
   if (player.playerChoice != undefined) {
     setTimeout(function() {
@@ -315,6 +351,7 @@ function countdown() {
 }
 
 countdown();
+*/
 
 let selectButton = document.getElementById("reset_button");
 
