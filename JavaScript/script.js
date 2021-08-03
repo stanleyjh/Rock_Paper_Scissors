@@ -97,7 +97,7 @@ function botChoice() {
   else {
     bot.botChoice = scissors;
   }
-  //console.log("Bot choice: " + bot.botChoice);
+  console.log("Bot choice: " + bot.botChoice);
 }
 
 botChoice();
@@ -226,14 +226,14 @@ function gameLogic(playerChoice, botChoice) {
   createH2.appendChild(createH2_text);
   selectGameboard1.appendChild(createH2);
   
-  if ((playerChoice == "rock" && botChoice == "scissors") || (playerChoice == "scissors" && botChoice == "paper") || (playerChoice == "paper" && botChoice == "rock")) {
+  if ((playerChoice == "Rock" && botChoice == "Scissors") || (playerChoice == "Scissors" && botChoice == "Paper") || (playerChoice == "Paper" && botChoice == "Rock")) {
     createH2_text.nodeValue = playerWin;
     player.playerWins++;
     bot.botLosses++;
     scoreboardUpdate();
     postAnimation(player.playerChoice, bot.botChoice);
   }
-  else if ((botChoice == "rock" && playerChoice == "scissors") || (botChoice == "scissors" && playerChoice == "paper") || (botChoice == "paper" && playerChoice == "rock")) {
+  else if ((botChoice == "Rock" && playerChoice == "Scissors") || (botChoice == "Scissors" && playerChoice == "Paper") || (botChoice == "Paper" && playerChoice == "Rock")) {
     createH2_text.nodeValue = botWin;
     player.playerLosses++;
     bot.botWins++;
@@ -246,8 +246,6 @@ function gameLogic(playerChoice, botChoice) {
     scoreboardUpdate();
     postAnimation(player.playerChoice, bot.botChoice);
   }
-
-
 }
 
 function postAnimation(playerChoice, botChoice) {
@@ -258,27 +256,57 @@ function postAnimation(playerChoice, botChoice) {
   const createH3_playerChoice = document.createElement("h3");
   const createH3_playerChoice_text = document.createTextNode("You Chose:");
 
+  // create new div element to wrap around player choice.
+  const newDiv = document.createElement("div");
+  selectGameboard1.appendChild(newDiv);
+
   createH3_playerChoice.appendChild(createH3_playerChoice_text);
-  selectGameboard1.appendChild(createH3_playerChoice);
+
+  // appendChild createH3_playerChoice within newDiv
+  newDiv.appendChild(createH3_playerChoice);
 
   const createP_playerChoice = document.createElement("p");
   const createP_playerChoice_text = document.createTextNode(playerChoice);
 
   createP_playerChoice.appendChild(createP_playerChoice_text);
-  selectGameboard1.appendChild(createP_playerChoice);
+
+  // appendChild createP_playerChoice within newDiv
+  newDiv.appendChild(createP_playerChoice);
+
+  const createPlayerImg = document.createElement("img");
+  
+
+  newDiv.appendChild(createPlayerImg);
 
   // bot choice
   const createH3_botChoice = document.createElement("h3");
   const createH3_botChoice_text = document.createTextNode("Bot Chose: ");
+  const newDiv2 = document.createElement("div");
+
+  selectGameboard1.appendChild(newDiv2);
 
   createH3_botChoice.appendChild(createH3_botChoice_text);
-  selectGameboard1.appendChild(createH3_botChoice);
+  newDiv2.appendChild(createH3_botChoice);
 
   const createP_botChoice = document.createElement("p");
   const createP_botChoice_text = document.createTextNode(botChoice);
 
   createP_botChoice.appendChild(createP_botChoice_text);
-  selectGameboard1.appendChild(createP_botChoice);
+  newDiv2.appendChild(createP_botChoice);
+
+  // play again button
+  const newDiv3 = document.createElement("div");
+  selectGameboard1.appendChild(newDiv3);
+
+  // button
+  const createButton = document.createElement("button");
+  const createButton_text = document.createTextNode("Play again?");
+
+  createButton.classList.add("play_again_button");
+
+  createButton.appendChild(createButton_text);
+
+  newDiv3.appendChild(createButton);
 }
 
 /* CONSOLE
@@ -297,6 +325,7 @@ function scoreboard() {
 }
 */
 
+/* CONSOLE
 function playItAgain(playAgain) {
     playAgain = window.confirm('Press OK to play again.');
 
@@ -306,6 +335,7 @@ function playItAgain(playAgain) {
     countdown();
   }
 }
+*/ 
 
 /* CONSOLE
 function countdown() {
