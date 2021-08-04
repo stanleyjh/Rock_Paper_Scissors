@@ -75,10 +75,11 @@ body > div {
   margin: 1em;
   border: 4px solid darkgray;
   border-radius: 5px;
+  background-color: white;
 }
 
 .selection:hover {
-  background-color: #e7e5e5;
+  background-color: #f3f3f3;
 }
 
 .selection:active {
@@ -151,7 +152,7 @@ body > div {
 
 /* gamboard_3 */
 .gameboard_3 {
-  display: none;
+  display: grid;
   gap: 1em;
 }
 
@@ -185,14 +186,15 @@ body > div {
 /* player and bot choice div */
 .gameboard_3 > div:nth-child(2), .gameboard_3 > div:nth-child(3) {
   background-color: white;
-  border-radius: 10px;
+  border: 1pt solid darkgray;
 }
 
 .gameboard_3 img {
   width: 11em;
   height: 11em;
-  border: 3pt solid rgb(206, 206, 206);
-  border-radius: 5px;
+  border: 5px double gray;
+  border-radius: 50px;
+  background-color: lightgray;
 }
 
 /* buttons */
