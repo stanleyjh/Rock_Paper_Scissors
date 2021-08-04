@@ -1,29 +1,34 @@
 html {
-  background: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/people-playing-paper-rock-scissors-royalty-free-illustration-1583269312.jpg?crop=0.994xw:0.799xh;0.00160xw,0.195xh&resize=2048:*") no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background: rgb(238, 238, 238);
 }
 
-/* red border */
-/* h1, */
-/*.scoreboard, */
-/* .scoreboard > div > p, */
-/* .gameboard_1, */
-.gameboard_1 > div,
-/* .gameboard_1 > div > div, */
-/* .gameboard_1 > div > p, */
-.gameboard_2,
-.gameboard_2 > p,
-.gameboard_3,
-/* .play_again_button, */
-.reset_button {
-  border: 1pt solid red;
+/* @media rule that applies a nice layout to large screens.  */
+@media (min-width: 900px) {
+  body {
+    width: 900px;
+    /* center body */
+    margin: auto;
+  }
+}
+
+body {
+  margin-top: 1em;
+  border-radius: 5px;
+  background: white;
+  padding: .5em;
+  opacity: .97;
+  box-shadow: -1px -1px 10px .1px rgba(0,0,0,0.47);
+}
+
+/* modify style of all the divs within the body */
+body > div {
+  border-radius: 5px;
+  margin: 1em;
+  padding: .5em;
 }
 
 /* center text */
-h1, 
+.header, 
 .gameboard_1, 
 .scoreboard, 
 .scoreboard > p,
@@ -35,79 +40,98 @@ h1,
   text-align: center;
 }
 
-/* white background for elements */
-h1,
-.scoreboard,
-.gameboard_1,
-.gameboard_2,
-.gameboard_3,
-/* .play_again_button, */
-.reset_button {
-  background-color: white;
-}
-
-/* Header */
-h1 {
-  text-align: center;
+/* Headers */
+.header {
+  background-color: rgb(217, 243, 252);
+  background-size: cover;
+  border: 2px solid black;
 }
 
 /* Scoreboard */
-.scoreboard {
-  margin: 10px 0;
-}
-
 .scoreboard > div {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  font-weight: bold;
+  border: 2px black;
+  /* border-top-style: solid; */
+  border-style: solid hidden solid hidden;
 }
 
 .scoreboard > div > p {
-  margin: 16px;
+  margin: 1em;
+  font-size: large;
+}
+
+/* gameboards */
+[class^="gameboard"] {
+  background-color: rgb(217, 243, 252);
+  border: 2px solid black;
 }
 
 /* gameboard_1 */
-.gameboard_1 {
-  margin: 10px 0;
-}
-
 /* rock, paper, scissors button selection */
 .selection {
-  margin: 16px;
+  margin: 1em;
+  border: 4px solid darkgray;
+  border-radius: 5px;
+}
+
+.selection:hover {
+  background-color: #e7e5e5;
+}
+
+.selection:active {
+  box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.20) inset;
 }
 
 .selection > p {
-  margin: 16px;
-}
+  margin: 1em;
+  font-weight: bolder;
+  font-size: large;
+  }
 
 .selection > img {
-  width: 150px;
-  height: 150px;
+  width: 12em;
+  height: 12em;
+  margin: -6px;
 }
 
-/* pre-animation */
+/* gameboard_2 */
+.gameboard_2 {
+  display: none;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 440px;
+}
+
+.gameboard_2 > p {
+  font-size: xx-large;
+}
+
 #rock_animation {
-  animation-duration: 1.5s;
+  animation-duration: 1s;
   animation-fill-mode: forwards;
 } 
 
 #paper_animation {
-  /* animation-delay: 1.5s; */
-  animation-duration: 1.5s;
+  animation-delay: 1s;
+  animation-duration: 1s;
   animation-fill-mode: forwards;
   opacity: 0;
 }
 
 #scissors_animation {
-  /* animation-delay: 3s; */
-  animation-duration: 1.5s;
+  animation-delay: 2s;
+  animation-duration: 1s;
   animation-fill-mode: forwards;
   opacity: 0;
 }
 
 #shoot_animation {
-  /* animation-delay: 4.5s; */
-  animation-duration: 1.5s;
+  animation-delay: 3s;
+  animation-duration: 1s;
   animation-fill-mode: forwards;
   opacity: 0;
 }
@@ -116,88 +140,69 @@ h1 {
   0% {
     transform: scale(0);
     opacity: 0;
-    color: red;
   }
 
   100% {
     transform: scale(3);
     opacity: 100%;
-    color: blue;
     visibility: hidden;
   }
 }
 
-/* .gameboard_2 > p:nth-child(1) {
-  animation-name: appear_and_disappear;
-  animation-duration: 1s;
-}
-
-.gameboard_2 > p:nth-child(2) {
-  animation-name: appear_and_disappear;
-  animation-duration: 1s;
-  animation-delay: 1s;
-}
-
-.gameboard_2 > p:nth-child(3) {
-  animation-name: appear_and_disappear;
-  animation-duration: 1s;
-  animation-delay: 2s;
-}
-
-.gameboard_2 > p:nth-child(4) {
-  animation-name: appear_and_disappear;
-  animation-duration: 1s;
-  animation-delay: 3s;
-} */
-
 /* gamboard_3 */
 .gameboard_3 {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 5px;
+  display: none;
+  gap: 1em;
 }
 
-.gameboard_3 > h2 {
-  grid-column: 1/5;
+/* @media rule applied for larger than mobile screens. For enabling grid display on gameboard_3. */
+@media (min-width: 470px) {
+  .gameboard_3 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .gameboard_3 > h2 {
+    grid-column: 1/5;
+    font-size: xx-large;
+  }
+
+  /* player choice */
+  .gameboard_3 > div:nth-child(2) {
+    grid-column: 2/3;
+  }
+
+  /* bot choice */
+  .gameboard_3 > div:nth-child(3) {
+    grid-column: 3/4;
+  }
+
+  /* play_again_button */
+  .gameboard_3 > div:nth-child(4) {
+    grid-column: 1/5;
+  }
 }
 
-/* player choice */
-.gameboard_3 > div:nth-child(2) {
-  grid-column: 1/3;
-  color: red;
+/* player and bot choice div */
+.gameboard_3 > div:nth-child(2), .gameboard_3 > div:nth-child(3) {
+  background-color: white;
+  border-radius: 10px;
 }
 
-/* bot choice */
-.gameboard_3 > div:nth-child(3) {
-  grid-column: 3/5;
-  color: blue;
+.gameboard_3 img {
+  width: 11em;
+  height: 11em;
+  border: 3pt solid rgb(206, 206, 206);
+  border-radius: 5px;
 }
 
-/* play_again_button */
-.gameboard_3 > div:nth-child(4) {
-  grid-column: 2/4;
-  color: orange;
-}
-
-.play_again_button {
-  margin: 10px 0;
-}
-
-.play_again_button {
-  color: orange;
+/* buttons */
+.play_again_button, .reset_button > button {
   font-weight: bold;
-  padding: 10px 25px;
-  margin: 10px;
+  padding: 1em 2em;
+  margin: 1em;
+  border-radius: 1em;
 }
 
-/* Reset Button */
-.reset_button {
-  margin: 10px 0;
-}
-
-.reset_button > button {
-  color: red;
-  font-weight: bold;
-  padding: 10px 25px;
-  margin: 10px;
+.play_again_button:hover, .reset_button > button:hover {
+  background-color: #e7e5e5;
 }
