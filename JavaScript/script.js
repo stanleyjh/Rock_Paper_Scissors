@@ -55,8 +55,11 @@ let delayInMilliseconds = 100;
 let round = 0;
 let ties = 0;
 let result = undefined; 
-let playAgain = undefined;
-const timeOut = 1500;
+// let playAgain = undefined;
+let winnerText = undefined;
+const gameboard_3_timeout = 4000;
+// variable for setTimeout() and getting clearTimeout() to work
+let timeOut = undefined;
 
 // select ElementById
 const roundUpdate = document.getElementById("scoreboard_round");
@@ -71,6 +74,8 @@ const selectPaper = document.getElementById("paper_1");
 const selectScissors = document.getElementById("scissors_1");
 
 const selectGameboard1 = document.getElementsByClassName("gameboard_1")[0];
+const selectGameboard2 = document.getElementsByClassName("gameboard_2")[0];
+const selectGameboard3 = document.getElementsByClassName("gameboard_3")[0];
 
 function scoreboardUpdate() {
   roundUpdate.textContent = round;
@@ -97,7 +102,7 @@ function botChoice() {
   else {
     bot.botChoice = scissors;
   }
-  console.log("Bot choice: " + bot.botChoice);
+  //console.log("Bot choice: " + bot.botChoice);
 }
 
 botChoice();
@@ -116,19 +121,16 @@ playerChoice();
 // assigns player choice
 selectRock.addEventListener("click", () => {
   player.playerChoice = rock; 
-  console.log("Player choice: " + player.playerChoice);
   gameLogic(player.playerChoice, bot.botChoice);
 });
 
 selectPaper.addEventListener("click", () => {
   player.playerChoice = paper;
-  console.log("Player choice: " + player.playerChoice);
   gameLogic(player.playerChoice, bot.botChoice);
 });
 
 selectScissors.addEventListener("click", () => {
   player.playerChoice = scissors;
-  console.log("Player choice: " + player.playerChoice);
   gameLogic(player.playerChoice, bot.botChoice);
 });
 
@@ -158,6 +160,7 @@ function gameLogic(playerChoice, botChoice) {
 }
 */
 
+/* ORIGINAL
 function preAnimation() {
   // removes all child nodes from the parent.
   selectGameboard1.innerHTML = "";
@@ -211,7 +214,96 @@ function preAnimation() {
   shoot.remove();
   }, timeOut);
 }
+*/
 
+function gameLogic(playerChoice, botChoice) {
+  gameboard_2();
+
+  // console.log("Player Choice: " + playerChoice);
+
+  if ((playerChoice == "Rock" && botChoice == "Scissors") || (playerChoice == "Scissors" && botChoice == "Paper") || (playerChoice == "Paper" && botChoice == "Rock")) {
+    winnerText = "Player Wins!";
+    player.playerWins++;
+    bot.botLosses++;
+  }
+  else if ((botChoice == "Rock" && playerChoice == "Scissors") || (botChoice == "Scissors" && playerChoice == "Paper") || (botChoice == "Paper" && playerChoice == "Rock")) {
+    winnerText = "Bot Wins!";
+    player.playerLosses++;
+    bot.botWins++;
+  }
+  else {
+    winnerText = "Tie!";
+    ties++;
+  }
+
+  round++;
+
+  timeOut = setTimeout(gameboard_3, gameboard_3_timeout);
+}
+
+function gameboard_2() {
+  // removes gameboard_1[0] from the page.
+  selectGameboard1.style.display = "none";
+
+  // displays gameboard_2[0] on the page.
+  selectGameboard2.style.display = "block";
+
+  // select rock element for animation. childNodes indexes are spaced out as 
+  const selectRock = selectGameboard2.childNodes[1];
+  selectRock.setAttribute("id", "rock_animation");
+  selectRock.style.cssText = "animation-name: appear_and_disappear;";
+  
+  // select paper element for animation.
+  const selectPaper = selectGameboard2.childNodes[3];
+  selectPaper.setAttribute("id", "paper_animation");
+  selectPaper.style.cssText = "animation-name: appear_and_disappear;";
+
+  // select scissors element for animation.
+  const selectScissors = selectGameboard2.childNodes[5];
+  selectScissors.setAttribute("id", "scissors_animation");
+  selectScissors.style.cssText = "animation-name: appear_and_disappear;";
+
+  // select shoot element for animation.
+  const selectShoot = selectGameboard2.childNodes[7];
+  selectShoot.setAttribute("id", "shoot_animation");
+  selectShoot.style.cssText = "animation-name: appear_and_disappear;";
+}
+
+function gameboard_3() {
+  const selectPlayerChoice = player.playerChoice;
+  const selectBotChoice = bot.botChoice;
+
+  //const selectRockImage = "Images/rock.png";
+  //const selectPaperImage = "Images/paper.png";
+  //const selectScissorsImage = "Images/scissors.png";
+
+  // removes gameboard_2 on the page.
+  selectGameboard2.style.display = "none";
+  
+  // makes gameboard_3 visible.
+  selectGameboard3.style.display = "grid";
+
+  // updates gameboard_3 > h2 text to winnerText value.
+  selectGameboard3.childNodes[1].textContent = winnerText;
+
+  // updates gameboard_3 > first div > p to selectPlayerChoice value.
+  selectGameboard3.childNodes[3].childNodes[3].textContent = selectPlayerChoice;
+  
+  // updates gameboard_3 > first div > img.
+  selectGameboard3.childNodes[3].childNodes[5].src = "./Images/" + selectPlayerChoice + ".png";
+
+  // updates gameboard_3 > second div > p to selectBotChoice value.
+  selectGameboard3.childNodes[5].childNodes[3].textContent = selectBotChoice;
+
+  // updates gameboard_3 > second div > img.
+  selectGameboard3.childNodes[5].childNodes[5].src = "./Images/" + selectBotChoice + ".png";
+
+  scoreboardUpdate();
+}
+
+//setTimeout(gameboard_3, 3000);
+
+/* ORIGINAL
 function gameLogic(playerChoice, botChoice) {
   preAnimation();
 
@@ -247,7 +339,9 @@ function gameLogic(playerChoice, botChoice) {
     postAnimation(player.playerChoice, bot.botChoice);
   }
 }
+*/
 
+/* ORIGINAL
 function postAnimation(playerChoice, botChoice) {
 
   selectGameboard1.classList.add("gameboard_3");
@@ -308,6 +402,7 @@ function postAnimation(playerChoice, botChoice) {
 
   newDiv3.appendChild(createButton);
 }
+*/
 
 /* CONSOLE
 function scoreboard() {
@@ -383,11 +478,27 @@ function countdown() {
 countdown();
 */
 
+// play again button
+let selectPlayAgainButton = document.getElementsByClassName("play_again_button")[0];
+
+selectPlayAgainButton.addEventListener("click", playAgain);
+
+function playAgain() {
+  selectGameboard1.style.display = "block";
+  selectGameboard2.style.display = "none";
+  selectGameboard3.style.display = "none";
+}
+
+// reset button
 let selectButton = document.getElementById("reset_button");
 
-selectButton.addEventListener("click", resetButton);
+selectButton.addEventListener("click", () => {
+  // using playAgain function to reset animations
+  playAgain();
 
-function resetButton() {
+  // clearTimeout() method for gameboard_3 to fix the bug where if you quickly select a combination of a choice and the reset button, it still displays gameboard_3
+  clearTimeout(timeOut);
+  
   round = 0;
   player.playerWins = 0;
   player.playerLosses = 0;
@@ -396,4 +507,4 @@ function resetButton() {
   ties = 0;
 
   scoreboardUpdate();
-}
+});
