@@ -223,6 +223,8 @@ function playAgain() {
   selectGameboard1.style.display = "block";
   selectGameboard2.style.display = "none";
   selectGameboard3.style.display = "none";
+
+  botChoice();
 }
 
 // reset button

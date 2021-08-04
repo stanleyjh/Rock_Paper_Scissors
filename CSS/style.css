@@ -152,7 +152,7 @@ body > div {
 
 /* gamboard_3 */
 .gameboard_3 {
-  display: grid;
+  display: none;
   gap: 1em;
 }
 
@@ -187,6 +187,7 @@ body > div {
 .gameboard_3 > div:nth-child(2), .gameboard_3 > div:nth-child(3) {
   background-color: white;
   border: 1pt solid darkgray;
+  font-weight: bolder;
 }
 
 .gameboard_3 img {
