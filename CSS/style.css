@@ -1,23 +1,30 @@
 html {
-  background: rgb(238, 238, 238);
+  /* background: rgb(238, 238, 238); */
+  background: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/people-playing-paper-rock-scissors-royalty-free-illustration-1583269312.jpg?crop=0.994xw:0.799xh;0.00160xw,0.195xh&resize=2048:*") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 /* @media rule that applies a nice layout to large screens.  */
-@media (min-width: 900px) {
+@media (min-width: 1000px) {
   body {
-    width: 900px;
+    width: 1000px;
     /* center body */
     margin: auto;
   }
 }
 
 body {
-  margin-top: 1em;
+  margin-top: .5em;
   border-radius: 5px;
   background: white;
   padding: .5em;
   opacity: .97;
   box-shadow: -1px -1px 10px .1px rgba(0,0,0,0.47);
+
+  font-family: 'Bungee Shade', cursive;
 }
 
 /* modify style of all the divs within the body */
@@ -54,8 +61,11 @@ body > div {
   flex-wrap: wrap;
   font-weight: bold;
   border: 2px black;
-  /* border-top-style: solid; */
   border-style: solid hidden solid hidden;
+}
+
+.scoreboard > h2 {
+  font-size: x-large;
 }
 
 .scoreboard > div > p {
@@ -88,8 +98,9 @@ body > div {
 
 .selection > p {
   margin: 1em;
-  font-weight: bolder;
   font-size: large;
+  font-weight: bold;
+  font-family: 'Bungee Shade', cursive;
   }
 
 .selection > img {
@@ -104,11 +115,11 @@ body > div {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  min-height: 440px;
+  min-height: 360px;
 }
 
 .gameboard_2 > p {
-  font-size: xx-large;
+  font-size: large;
 }
 
 #rock_animation {
@@ -144,7 +155,7 @@ body > div {
   }
 
   100% {
-    transform: scale(3);
+    transform: scale(4);
     opacity: 100%;
     visibility: hidden;
   }
@@ -160,11 +171,11 @@ body > div {
 @media (min-width: 470px) {
   .gameboard_3 {
     grid-template-columns: repeat(4, 1fr);
+    font-size: large;
   }
 
   .gameboard_3 > h2 {
     grid-column: 1/5;
-    font-size: xx-large;
   }
 
   /* player choice */
@@ -185,8 +196,9 @@ body > div {
 
 /* player and bot choice div */
 .gameboard_3 > div:nth-child(2), .gameboard_3 > div:nth-child(3) {
-  background-color: white;
-  border: 1pt solid darkgray;
+  background-color: rgb(168, 233, 255);
+  border-radius: 1em;
+  /* border: 1pt solid darkgray; */
   font-weight: bolder;
 }
 
@@ -201,9 +213,12 @@ body > div {
 /* buttons */
 .play_again_button, .reset_button > button {
   font-weight: bold;
-  padding: 1em 2em;
+  padding: .5em 2em;
   margin: 1em;
   border-radius: 1em;
+
+  font-size: 1em;
+  font-family: 'Bungee Shade', cursive;
 }
 
 .play_again_button:hover, .reset_button > button:hover {
