@@ -5,7 +5,7 @@
 2. Once chosen, a count down will say "Rock, Paper, Scissors, Shoot!"
 3. Code is applied for storing and applying player information, bot information, and scoreboard information.
 4. Who ever wins, it will display who won OR tie.
-5. Counter will count who won.
+5. The scoreboard will update the wins, losses, and ties.
 
 ## Notes:
 ### Things needed to be made:
