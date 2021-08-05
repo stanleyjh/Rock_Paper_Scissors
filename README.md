@@ -21,20 +21,11 @@
 - Rock > scissors
 - Scissors > paper
 - Paper > rock
-
 - TIE if both players have the same choice. No points awarded.
 
 ## Challenges:
-- Challenge: 
-  - Figuring out how to modify the DOM using JavaScript to create animations. 
-- Solution: 
-  - I tested and created the animations with HTML and CSS. Once I was satisfied, I appended the class names (with the animations already in the CSS) using JavaScript so the animations can be ran at the right time.
+- **Challenge**: Figuring out how to modify the DOM using JavaScript to create animations. 
+- **Solution**: I tested and created the animations with HTML and CSS. Once I was satisfied, I appended the class names (with the animations already in the CSS) using JavaScript so the animations can be ran at the right time.
 
-- Challenge: 
-  - Bot logic. I needed a way to have the bot randomly choose rock, paper, or scissors.
-- Solution: 
-  - I used the Math.random() function to return a random number between 0 and 1. Then I multiplied the value by 2 then add 1. Once I got that value, I used Math.round() function to round the number. That resulted in a random number between 1 and 3. From there I assigned either rock, paper, scissors based on the value.
-
-- 1 == Rock
-- 2 == Paper
-- 3 == Scissors
+- **Challenge**: Bot logic. I needed a way to have the bot randomly choose rock, paper, or scissors.
+- **Solution**: I used the Math.random() function to return a random number between 0 and 1. Then I multiplied the value by 2 then add 1. Once I got that value, I used Math.round() function to round the number. That resulted in a random number between 1 and 3. From there I assigned either rock, paper, scissors based on the value: 1 == Rock, 2 == Paper, 3 == Scissors.
