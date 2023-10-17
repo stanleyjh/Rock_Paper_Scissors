@@ -1,4 +1,4 @@
-# Rock, Paper, Scissors!
+# [Rock, Paper, Scissors!](https://stanleyjh.github.io/Rock_Paper_Scissors/)
 
 ## Process:
 1. Player chooses either rock, paper, or scissors.
